@@ -5,30 +5,31 @@ struct HomePageView: View {
         NavigationView {
             VStack {
                 Spacer()
-                Image("your_logo")
+                Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
+                    .frame(width: 320, height: 320)
                     .padding()
                 
                 NavigationLink(destination: ChatView()) {
                     Text("Start Chat")
                         .font(.headline)
-                        .padding()
-                        .background(Color.blue)
                         .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 54)
+                        .background(Color.blue)
                         .cornerRadius(10)
+                        .padding(.horizontal, 70)
                 }
                 .padding()
                 
                 Spacer()
             }
             .navigationBarHidden(true)
-            .background(Color.white.edgesIgnoringSafeArea(.all))
+            .background(Color.white.ignoresSafeArea())
         }
     }
 }
-
 
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {

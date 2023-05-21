@@ -1,9 +1,9 @@
 import SwiftUI
+import AVFoundation
+import UIKit
 import OpenAISwift
 
 final class ViewModel: ObservableObject {
-    init() {}
-    
     private var client: OpenAISwift?
     
     func setup() {
@@ -20,6 +20,16 @@ final class ViewModel: ObservableObject {
                 break
             }
         }
+    }
+    
+    func playMessageReceivedSound() {
+        let systemSoundID: SystemSoundID = 1016
+        AudioServicesPlaySystemSound(systemSoundID)
+    }
+    
+    func triggerVibration() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
 }
 
@@ -68,6 +78,10 @@ struct ChatView: View {
             .onAppear {
                 viewModel.setup()
             }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                stopSound()
+                stopVibration()
+            }
         }
     }
     
@@ -84,8 +98,19 @@ struct ChatView: View {
                 let message = Message(sender: "ChatGPT model", content: answer)
                 messages.append(message)
                 text = ""
+                viewModel.playMessageReceivedSound()
+                viewModel.triggerVibration()
             }
         }
+    }
+    
+    private func stopSound() {
+        AudioServicesDisposeSystemSoundID(1016)
+    }
+    
+    private func stopVibration() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
 }
 
@@ -119,4 +144,3 @@ struct ChatView_Previews: PreviewProvider {
         ChatView()
     }
 }
-
