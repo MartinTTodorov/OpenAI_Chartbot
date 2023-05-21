@@ -37,6 +37,8 @@ struct ChatView: View {
     @ObservedObject var viewModel = ViewModel()
     @State private var text = ""
     @State private var messages = [Message]()
+    @State private var showSettingsSheet = false
+    @State private var messageColor = Color.blue
     
     struct Message: Identifiable, Equatable {
         let id = UUID()
@@ -51,7 +53,7 @@ struct ChatView: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(messages) { message in
-                                MessageView(message: message)
+                                MessageView(message: message, messageColor: messageColor)
                                     .id(message.id)
                             }
                         }
@@ -75,12 +77,18 @@ struct ChatView: View {
                 .padding(.bottom)
             }
             .navigationBarTitle("Chat")
+            .navigationBarItems(trailing: Button(action: showSettings) {
+                Text("Settings")
+            })
             .onAppear {
                 viewModel.setup()
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                 stopSound()
                 stopVibration()
+            }
+            .sheet(isPresented: $showSettingsSheet) {
+                SettingsPanelView(messageColor: $messageColor)
             }
         }
     }
@@ -112,10 +120,15 @@ struct ChatView: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
+    
+    private func showSettings() {
+        showSettingsSheet = true
+    }
 }
 
 struct MessageView: View {
     let message: ChatView.Message
+    let messageColor: Color
     
     var body: some View {
         HStack {
@@ -123,7 +136,7 @@ struct MessageView: View {
                 Spacer()
                 Text(message.content)
                     .padding()
-                    .background(Color.blue)
+                    .background(messageColor)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             } else {
@@ -136,6 +149,17 @@ struct MessageView: View {
             }
         }
         .padding(.horizontal)
+    }
+}
+
+struct SettingsPanelView: View {
+    @Binding var messageColor: Color
+    
+    var body: some View {
+        VStack {
+            ColorPicker("Message Color", selection: $messageColor)
+                .padding()
+        }
     }
 }
 
