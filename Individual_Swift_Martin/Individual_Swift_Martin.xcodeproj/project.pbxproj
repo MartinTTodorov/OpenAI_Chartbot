@@ -16,6 +16,8 @@
 		3F60E6F22A1A237200B69203 /* Individual_Swift_MartinUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F60E6F12A1A237200B69203 /* Individual_Swift_MartinUITestsLaunchTests.swift */; };
 		3F60E7002A1A23CF00B69203 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F60E6FF2A1A23CF00B69203 /* OpenAISwift */; };
 		3FC204672A1A4EAA004AACA6 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC204662A1A4EAA004AACA6 /* Secret.swift */; };
+		3FC204692A1A75D0004AACA6 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC204682A1A75D0004AACA6 /* HomePageView.swift */; };
+		3FC2046B2A1A772A004AACA6 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2046A2A1A772A004AACA6 /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		3F60E6EF2A1A237200B69203 /* Individual_Swift_MartinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Individual_Swift_MartinUITests.swift; sourceTree = "<group>"; };
 		3F60E6F12A1A237200B69203 /* Individual_Swift_MartinUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Individual_Swift_MartinUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FC204662A1A4EAA004AACA6 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		3FC204682A1A75D0004AACA6 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		3FC2046A2A1A772A004AACA6 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				3F60E6D82A1A237200B69203 /* Assets.xcassets */,
 				3F60E6DA2A1A237200B69203 /* Preview Content */,
 				3FC204662A1A4EAA004AACA6 /* Secret.swift */,
+				3FC204682A1A75D0004AACA6 /* HomePageView.swift */,
+				3FC2046A2A1A772A004AACA6 /* ChatView.swift */,
 			);
 			path = Individual_Swift_Martin;
 			sourceTree = "<group>";
@@ -270,6 +276,8 @@
 			files = (
 				3F60E6D72A1A237200B69203 /* ContentView.swift in Sources */,
 				3FC204672A1A4EAA004AACA6 /* Secret.swift in Sources */,
+				3FC2046B2A1A772A004AACA6 /* ChatView.swift in Sources */,
+				3FC204692A1A75D0004AACA6 /* HomePageView.swift in Sources */,
 				3F60E6D52A1A237200B69203 /* Individual_Swift_MartinApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
